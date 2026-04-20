@@ -35,7 +35,7 @@ int main(){
             if (left != -1 && right != -1){
                 double num = (left + right)/2;
                 if (num < 0){
-                    if (left % 2 == 0 && right % 2 ==0 || left % 2 != 0 && right % 2 !=0){
+                    if (fmod(num, 1.0) == 0.0){
                     array[i] = num;
                     } else{
                     array[i] = num -1;
