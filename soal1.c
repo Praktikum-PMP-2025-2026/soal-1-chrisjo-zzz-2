@@ -7,56 +7,54 @@
  */
 
 #include <stdio.h>
-#include <math.h>
 
-int main(){
+int main() {
     int n;
-    scanf ("%d", &n);
-    int array[n];
-    for (int i = 0; i < n; i++){
-        scanf ("%d", &array[i]);
+    scanf("%d", &n);
+    int arr[n];
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    for (int i = 0; i < n; i++){
-        if(array[i] == -1){
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == -1) {
             int left = -1, right = -1;
-            for (int j = i - 1; j >= 0; j--){
-                if(array[j] != -1){
-                    left = array[j];
+            for(int j = i - 1; j >= 0; j--) {
+                if(arr[j] != -1) {
+                    left = arr[j];
                     break;
                 }
             }
-            for (int j = i + 1; j < n; j++){
-                if(array[j] != -1){
-                    right = array[j];
+            for(int j = i + 1; j < n; j++) {
+                if(arr[j] != -1) {
+                    right = arr[j];
                     break;
                 }
             }
-            if (left != -1 && right != -1){
-                double num = (left + right)/2;
-                if (num < 0){
-                    if (fmod(num, 1.0) == 0.0){
-                    array[i] = num;
-                    } else{
-                    array[i] = num -1;
-                    }
-                }       
-            } else if (left != -1){
-                array[i] = left;
-            } else if (right != -1){
-                array[i] = right;
-            } else{
-                array[i] = 0;
+            if(left != -1 && right != -1) {
+                arr[i] = (left + right) / 2;
+            } else if(left != -1) {
+                arr[i] = left;
+            } else if(right != -1) {
+                arr[i] = right;
+            } else {
+                arr[i] = 0;
             }
         }
     }
 
-    int jumlah_max = 0;
-    printf("RECOVERED");
-    for(int i = 0; i < n; i++){
-        printf(" %d", array[i]);
-        jumlah_max += array[i];
+    int max_sum = arr[0];
+    int cur = arr[0];
+    for(int i = 1; i < n; i++) {
+        cur = (arr[i] > cur + arr[i]) ? arr[i] : cur + arr[i];
+        max_sum = (max_sum > cur) ? max_sum : cur;
     }
-    printf("\nMAX_SUM %d\n", jumlah_max);
+
+    printf("RECOVERED");
+    for(int i = 0; i < n; i++) {
+        printf(" %d", arr[i]);
+    }
+    printf("\nMAX_SUM %d\n", max_sum);
+
     return 0;
 }
