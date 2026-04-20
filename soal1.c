@@ -43,12 +43,6 @@ int main(){
         }
     }
 
-/*    int jumlah_max = array[0];
-    int x = array[0];
-    for (int i = 0; i < n; i++){
-        x = (array[i] > x + array[i]) ? array[i] : x + array[i];
-        jumlah_max = (jumlah_max > x) ? jumlah_max : x;
-    }*/
     int jumlah_max = 0;
     printf("RECOVERED");
     for(int i = 0; i < n; i++){
